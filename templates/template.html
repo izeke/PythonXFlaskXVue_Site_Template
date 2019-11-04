@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+   <meta charset="utf-8">
+   <title>Flask Parent Template</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Image Processing Project Site</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="{%if request.path == url_for('home')%} active {%endif%}">
+              <a href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="{%if request.path == url_for('about')%} active {%endif%}">
+              <a href="{{ url_for('about') }}">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Vue -->
+    <script src="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- ajax -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>

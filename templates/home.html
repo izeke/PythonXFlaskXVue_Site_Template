@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Tutorial</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <h1> My First Try Using Flask </h1>
+    <p> Flask is Fun </p>
+
+    <div id="app">
+      [[ band ]]
+      [[ albums ]]
+    </div>
+    {% endblock %}
+
+    {% block scripts %}
+      <script>
+          var app = new Vue({
+              el: '#app',
+              delimiters: ['[[', ']]'],
+              data: {
+                  band: {},
+                  albums: {}
+              },
+              methods: {
+                  fetchData: function() {
+                      this.$http.get('/testband').then(response => {
+                        this.band = response.body;
+                      }, response => {
+                          console.log("an error occurred");
+                      });
+                      this.$http.post('/testalbums', {params: {'band': 'gunship'}}).then(response => {
+                        this.albums = response.body;
+                      }, response => {
+                          console.log("an error occurred");
+                      });
+                  }
+              },
+              mounted: function() {
+                  this.fetchData();
+              }
+          })
+      </script>
+    {% endblock %}
+  </body>
+</html>
