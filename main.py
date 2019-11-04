@@ -14,14 +14,19 @@ def about():
 
 @app.route('/testband')
 def testband():
-    my_dict = { "title": "Gunship", "genre": "Synthwave"}
+    my_dict = { "title": "The Midnight", "genre": "Synthwave"}
     return json.dumps(my_dict)
 
 @app.route('/testalbums', methods=['POST'])
 def testalbums():
-    my_dict = { 0: "Gunship", 1: "Dark All Day"}
-    pprint(request.json)
-    return json.dumps(my_dict)
+    band = request.json['params']['band'];
+    if band == "Gunship":
+    	albums = ["Gunship", "Dark All Day"]
+    elif band == "The Midnight":
+    	albums = ["Days of Thunder", "Endless Summer", "Nocturnal", "Kids"]
+
+    print(albums)
+    return json.dumps(albums)
 
 if __name__ == "__main__":
     app.run(debug=True)
