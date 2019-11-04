@@ -18,33 +18,7 @@
     {% endblock %}
 
     {% block scripts %}
-      <script>
-          var app = new Vue({
-              el: '#app',
-              delimiters: ['[[', ']]'],
-              data: {
-                  band: {},
-                  albums: {}
-              },
-              methods: {
-                  fetchData: function() {
-                      this.$http.get('/testband').then(response => {
-                        this.band = response.body;
-                      }, response => {
-                          console.log("an error occurred");
-                      });
-                      this.$http.post('/testalbums', {params: {'band': 'gunship'}}).then(response => {
-                        this.albums = response.body;
-                      }, response => {
-                          console.log("an error occurred");
-                      });
-                  }
-              },
-              mounted: function() {
-                  this.fetchData();
-              }
-          })
-      </script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/app.vue.js') }}"></script>
     {% endblock %}
   </body>
 </html>
