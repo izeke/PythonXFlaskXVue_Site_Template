@@ -1,7 +1,8 @@
 from flask import Flask, render_template, json, request
 from pprint import pprint
+from os import listdir
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 
 @app.route("/")
@@ -27,6 +28,10 @@ def testalbums():
 
     print(albums)
     return json.dumps(albums)
+
+@app.route('/getInputImageFilenames')
+def getInputImageFilenames():
+    return json.dumps(listdir(app.root_path + "/static/img/input"))
 
 if __name__ == "__main__":
     app.run(debug=True)

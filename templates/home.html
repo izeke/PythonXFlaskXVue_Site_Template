@@ -14,8 +14,9 @@
       See the simple Vue app below. </p>
 
     <div id="app">
-      [[ band ]]
-      [[ albums ]]
+      <div v-for="image in images" class="image-container">
+        <img class="thumbnail" :src="'{{url_for('static', filename='')}}img/input/' + image">
+      </div>
     </div>
     {% endblock %}
 
