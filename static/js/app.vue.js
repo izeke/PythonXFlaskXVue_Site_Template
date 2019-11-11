@@ -4,8 +4,7 @@ var app = new Vue({
     data: {
         band: {},
         albums: {},
-        images: {},
-        loadedImage: "static/img/placeholder.jpg"
+        images: {}
     },
     methods: {
         fetchData: function() {
@@ -24,95 +23,6 @@ var app = new Vue({
 
             this.$http.get('/getInputImageFilenames').then(response => {
                 this.images = response.body;
-            })
-        },
-        loadImage: function(image) {
-            this.$http.post('/loadImage', {params: {'image': image}}, {headers: {'Cache-Control': 'max-age=0, must-revalidate, no-store'}}).then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-            }, response => {
-                console.log("an error occurred");
-            });
-        },
-        addVLine: function() {
-            this.$http.get('/addVLine').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
-            })
-        },
-        addHLine: function() {
-            this.$http.get('/addHLine').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
-            })
-        },
-        shiftSubsetV: function() {
-            this.$http.get('/shiftSubsetV').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
-            })
-        },
-        shiftSubsetH: function() {
-            this.$http.get('/shiftSubsetH').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
-            })
-        },
-        fuzzify: function() {
-            this.$http.get('/fuzzify').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
-            })
-        },
-        scanlineify: function() {
-            this.$http.get('/scanlineify').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
-            })
-        },
-        bitify: function() {
-            this.$http.get('/bitify').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
-            })
-        },
-        splitColors: function() {
-            this.$http.get('/splitColors').then(response => {
-                let newImage = new Image();
-                newImage.src = "static/img/out.jpg?" + new Date().getTime();
-                this.loadedImage = newImage.src;
-                console.log("successfully updated image")
-            }, response => {
-                console.log("an error occurred");
             })
         }
     },
