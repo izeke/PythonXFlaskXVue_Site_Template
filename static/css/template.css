@@ -1,11 +1,12 @@
-div.image-container {
+div.thumbnail-container {
     position: relative;
     float: left;
-    width: 20vw;
-    height: 20vw;
+    width: 10vw;
+    height: 10vw;
     margin: 10px;
     background-color: #000;
     border-radius: 4px;
+    cursor: pointer;
 }
 img.thumbnail {
     max-width: 100%;
@@ -14,6 +15,19 @@ img.thumbnail {
     top: 0;
     bottom: 0;
     margin: auto;
+    border: none;
+    background-color: #000;
+}
+
+
+div.image-container {
+    width: 80vw;
+    display: block;
+    margin: auto;
+}
+img.edited-image {
+    max-width: 100%;
+    max-height: 100%;
     border: none;
     background-color: #000;
 }

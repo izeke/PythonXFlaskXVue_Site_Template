@@ -14,8 +14,28 @@
       See the simple Vue app below. </p>
 
     <div id="app">
-      <div v-for="image in images" class="image-container">
-        <img class="thumbnail" :src="'{{url_for('static', filename='')}}img/input/' + image">
+      <div class="thumbnail-group">
+        <div v-for="image in images" class="thumbnail-container">
+          <img
+            class="thumbnail"
+            :src="'{{url_for('static', filename='')}}img/input/' + image"
+            v-on:click="loadImage(image)">
+        </div>
+      </div>
+      <div class="image-container">
+        <img
+          class="edited-image"
+          :src="loadedImage">
+      </div>
+      <div>
+        <button class='btn btn-primary' v-on:click="addVLine()">Add Vertical Line</button>
+        <button class='btn btn-primary' v-on:click="addHLine()">Add Horizontal Line</button>
+        <button class='btn btn-primary' v-on:click="shiftSubsetV()">Shift a Vertical Subset</button>
+        <button class='btn btn-primary' v-on:click="shiftSubsetH()">Shift a Horizontal Subset</button>
+        <button class='btn btn-primary' v-on:click="fuzzify()">Fuzzify</button>
+        <button class='btn btn-primary' v-on:click="scanlineify()">Add Scanlines</button>
+        <button class='btn btn-primary' v-on:click="bitify()">Reduce Bits</button>
+        <button class='btn btn-primary' v-on:click="splitColors()">Split Colors</button>
       </div>
     </div>
     {% endblock %}
