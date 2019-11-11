@@ -3,8 +3,7 @@ var app = new Vue({
     delimiters: ['[[', ']]'],
     data: {
         band: {},
-        albums: {},
-        images: {}
+        albums: {}
     },
     methods: {
         fetchData: function() {
@@ -12,7 +11,7 @@ var app = new Vue({
               this.band = response.body;
             }, response => {
                 console.log("an error occurred");
-            }).then(() => {
+            }).then(() => { 
                 this.$http.post('/testalbums', {params: {'band': this.band['title']}}).then(response => {
                   this.albums = response.body;
                 }, response => {
@@ -20,10 +19,6 @@ var app = new Vue({
                 });
               }
             )
-
-            this.$http.get('/getInputImageFilenames').then(response => {
-                this.images = response.body;
-            })
         }
     },
     mounted: function() {
